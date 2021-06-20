@@ -1,0 +1,9 @@
+account default
+host your.mailserver.host
+port 587
+tls on
+auth on
+user your.username
+password your.password
+from sender@mailserver.host
+logfile /var/log/msmtp.log
