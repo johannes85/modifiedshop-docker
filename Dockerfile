@@ -47,7 +47,10 @@ RUN mkdir /webroot && \
     chown www-data:www-data /webroot && \
     chown www-data:www-data /var/log/apache2 && \
     chown www-data:www-data /var/lock/apache2 && \
-    a2enmod rewrite && a2dissite 000-default && \
+    a2enmod rewrite && \
+    a2enmod headers && \
+    a2enmod expires && \
+    a2dissite 000-default && \
     touch /var/log/msmtp.log && \
     chown www-data:www-data /var/log/msmtp.log
 
