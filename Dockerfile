@@ -1,9 +1,9 @@
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 
 RUN apt-get update && apt-get install -y apt-transport-https lsb-release ca-certificates curl gnupg
 
 RUN \
-  echo 'deb https://packages.sury.org/php/ buster main' > /etc/apt/sources.list.d/php.list && \
+  echo 'deb https://packages.sury.org/php/ bullseye main' > /etc/apt/sources.list.d/php.list && \
   curl https://packages.sury.org/php/apt.gpg | apt-key add
 
 RUN apt-get update && apt-get install -y \
@@ -47,9 +47,11 @@ RUN mkdir /webroot && \
     chown www-data:www-data /webroot && \
     chown www-data:www-data /var/log/apache2 && \
     chown www-data:www-data /var/lock/apache2 && \
-    a2enmod rewrite && a2dissite 000-default && \
+    a2enmod rewrite && \
+    a2enmod headers && \
+    a2enmod expires && \
+    a2dissite 000-default && \
     touch /var/log/msmtp.log && \
     chown www-data:www-data /var/log/msmtp.log
-
 
 CMD ["/opt/modified/entrypoint.sh"]
