@@ -37,7 +37,7 @@ Ordner                                                Rechte  Funktion
 /templates/tpl_modified                               777     Template-Verzeichnis
 /templates/xtc5                                       777     Template-Verzeichnis
 /templates_c                                          777     Smarty-Verzeichnis
-   
+  
 Datei                                                 Rechte  Funktion
 /sitemap.xml                                          777     Datei für die Sitemap-Informationen
 /includes/configure.php                               777     Konfigurationsdatei Shop
@@ -52,8 +52,6 @@ Rechtevergabe nach der Installation für die configure-Dateien zu Sicherheitszwe
 
 Datei                                       Rechte  Funktion
 /includes/configure.php                     444     Konfigurationsdatei Shop
-
-1.4 Verzeichnis "_installer" der Installationsroutine löschen
 
 ';
 
