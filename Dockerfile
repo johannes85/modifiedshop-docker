@@ -1,25 +1,26 @@
-FROM debian:bookworm-slim
+FROM debian:trixie-slim
 
 RUN apt-get update && apt-get install -y apt-transport-https lsb-release ca-certificates curl gnupg
 
 RUN \
-  echo 'deb https://packages.sury.org/php/ bookworm main' > /etc/apt/sources.list.d/php.list && \
-  curl https://packages.sury.org/php/apt.gpg | apt-key add
+  curl -sSLo /tmp/debsuryorg-archive-keyring.deb https://packages.sury.org/debsuryorg-archive-keyring.deb && \
+  dpkg -i /tmp/debsuryorg-archive-keyring.deb && \
+  echo "deb [signed-by=/usr/share/keyrings/debsuryorg-archive-keyring.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
 
 RUN apt-get update && apt-get install -y \
     apache2 \
-    php8.1-bcmath \
-    php8.1-intl \
-    php8.1-mbstring \
-    php8.1-dom \
-    php8.1-xml \
-    php8.1-gd \
-    php8.1-pdo \
-    php8.1-mysqli \
-    php8.1-zip \
-    php8.1-curl \
-    php8.1-soap \
-    libapache2-mod-php8.1 \
+    php8.4-bcmath \
+    php8.4-intl \
+    php8.4-mbstring \
+    php8.4-dom \
+    php8.4-xml \
+    php8.4-gd \
+    php8.4-pdo \
+    php8.4-mysqli \
+    php8.4-zip \
+    php8.4-curl \
+    php8.4-soap \
+    libapache2-mod-php8.4 \
     msmtp-mta \
   && rm -rf /var/lib/apt/lists/*
 

@@ -55,7 +55,7 @@ Datei                                       Rechte  Funktion
 
 ';
 
-function chmodr(string $path, string $mod, bool $recursive = false): void {
+function chmodr(string $path, string $mod, bool $recursive = false) {
   system(sprintf(
     'chmod %s %s%s',
     $mod,

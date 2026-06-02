@@ -1,3 +1,4 @@
+.vscode
 /docker/msmtprc
 /dbdata
 !/dbdata/.keep
